@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Reports</title>
+  <link href="/styles/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <%- include ('partials/header') %>
+  <main class="container mx-auto py-10">
+    <h2 class="text-2xl font-bold mb-6 text-center">Admin Reports</h2>
+    <table class="w-full bg-white shadow-md rounded">
+      <thead>
+        <tr class="bg-gray-200">
+          <th class="py-2 px-4 text-left">Sport</th>
+          <th class="py-2 px-4 text-left">Sessions Played</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% report.forEach(row => { %>
+          <tr>
+            <td class="py-2 px-4 border-b"><%= row.sport.name %></td>
+            <td class="py-2 px-4 border-b"><%= row.sessionCount %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </main>
+  <%- include ('partials/footer') %>
+</body>
+</html>

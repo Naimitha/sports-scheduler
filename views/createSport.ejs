@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Sport</title>
+  <link href="/styles/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <%- include ('partials/header') %>
+  <main class="container mx-auto max-w-md py-10">
+    <h2 class="text-2xl font-bold mb-6 text-center">Create a New Sport</h2>
+    <form action="/admin/sport/new" method="POST" class="bg-white p-6 shadow-md rounded">
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-bold mb-2">Sport Name</label>
+        <input type="text" name="name" id="name" class="w-full p-2 border rounded" required>
+      </div>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Create Sport</button>
+    </form>
+  </main>
+  <%- include ('partials/footer') %>
+</body>
+</html>

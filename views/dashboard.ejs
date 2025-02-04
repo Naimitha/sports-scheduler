@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="/styles/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <%- include ('partials/header') %>
+  <main class="container mx-auto py-10">
+    <h2 class="text-3xl font-bold mb-6 text-center">Welcome, <%= user.name %>!</h2>
+    <section class="mb-10">
+      <h3 class="text-2xl font-semibold mb-4">Your Profile</h3>
+      <div class="bg-white p-6 shadow-md rounded">
+        <p><strong>Name:</strong> <%= user.name %></p>
+        <p><strong>Email:</strong> <%= user.email %></p>
+      </div>
+    </section>
+    <section class="mb-10">
+      <h3 class="text-2xl font-semibold mb-4">Available Sports</h3>
+      <% if (sports.length === 0) { %>
+        <p>No available sports at the moment.</p>
+      <% } else { %>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <% sports.forEach(sport => { %>
+            <li class="bg-white p-4 shadow-md rounded">
+              <h4 class="text-lg font-bold"><%= sport.name %></h4>
+              <a href="/session/new?sportId=<%= sport.id %>" class="text-blue-600 hover:underline">Create Session</a>
+            </li>
+          <% }); %>
+        </ul>
+      <% } %>
+    </section>
+    <section>
+      <h3 class="text-2xl font-semibold mb-4">Upcoming Sessions</h3>
+      <% if (sessions.length === 0) { %>
+        <p>No upcoming sessions at the moment.</p>
+      <% } else { %>
+        <ul class="space-y-4">
+          <% sessions.forEach(session => { %>
+            <li class="bg-white p-4 shadow-md rounded">
+              <h4 class="text-lg font-bold"><%= session.id %></h4>
+              <p><strong>Date:</strong> <%= new Date(session.date).toLocaleDateString() %></p>
+              <p><strong>Venue:</strong> <%= session.venue %></p>
+              <p><strong>Status:</strong> <%= session.status %></p>
+            </li>
+          <% }); %>
+        </ul>
+      <% } %>
+    </section>
+  </main>
+  <%- include ('partials/footer') %>
+</body>
+</html>
